@@ -2,7 +2,7 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>de.froznmine</groupId>
   <artifactId>LobbySystem</artifactId>
-  <version>0.0.1-3</version>
+  <version>0.0.1-4</version>
   <name>LobbySystem</name>
   <description>A lobby system plugin for Minecraft Bukkit Servers. It adds the possibility to manage multiple games with one plugin</description>
   
@@ -12,9 +12,9 @@
     <minecraft.version>1.7.9</minecraft.version>
     
     <bukkit.version>R0.2</bukkit.version>
-<!-- 
-    <vault.version>1.2.27</vault.version>
-
+ 
+    <vault.version>1.4.1</vault.version>
+<!--
     <metrics.version>R7</metrics.version>
 -->
   </properties>
@@ -24,12 +24,12 @@
       <id>bukkit-repo</id>
       <url>http://repo.bukkit.org/content/groups/public/</url>
     </repository>   
-<!-- 
+
     <repository>
       <id>vault-repo</id>
       <url>http://nexus.theyeticave.net/content/repositories/pub_releases</url>
     </repository>
-    
+<!--  
     <repository>
       <id>metrics-repo</id>
       <url>http://repo.mcstats.org/content/repositories/releases/</url>
@@ -66,14 +66,14 @@
       <version>${minecraft.version}-${bukkit.version}</version>
       <scope>provided</scope>
     </dependency>
-<!--
+<!-- 
     <dependency>
       <groupId>org.bukkit</groupId>
       <artifactId>craftbukkit</artifactId>
       <version>${minecraft.version}-${bukkit.version}</version>
       <scope>provided</scope>
     </dependency>
-    
+-->   
     <dependency>
       <groupId>net.milkbowl.vault</groupId>
       <artifactId>Vault</artifactId>
@@ -86,7 +86,7 @@
       </exclusions>
       <scope>provided</scope>
     </dependency>
-    
+<!-- 
     <dependency>
       <groupId>org.mcstats.bukkit</groupId>
       <artifactId>metrics</artifactId>
