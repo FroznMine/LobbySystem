@@ -9,6 +9,9 @@
 /.project
 /.settings
 
+# Maven
+/target
+
 # NetBeans
 /nbproject
 
@@ -20,6 +23,3 @@
 
 # Ant
 build.number
-
-# Maven
-/target
