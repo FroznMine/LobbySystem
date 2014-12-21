@@ -11,6 +11,8 @@ import de.froznmine.lobby.user.User;
  * @author FroznMine
  */
 public class GameUser extends User {
+	private PlayerRole role;
+	
 	/**
 	 * Creates a new GamePlayer based on the given player</br> Gets UUID and
 	 * location of that player and stores it</br>
@@ -20,5 +22,19 @@ public class GameUser extends User {
 	 */
 	public GameUser(final Player player) {
 		super(player);
+		this.role = PlayerRole.PLAYER;
+	}
+	
+	public PlayerRole getRole() {
+		return this.role;
+	}
+	
+	public void setRole(PlayerRole role) {
+		this.role = role;
+	}
+	
+	public enum PlayerRole {
+		PLAYER,
+		SPECTATOR;
 	}
 }
