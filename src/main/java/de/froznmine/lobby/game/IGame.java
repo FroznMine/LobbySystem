@@ -3,23 +3,30 @@ package de.froznmine.lobby.game;
 import org.bukkit.entity.Player;
 
 public interface IGame {
-	/**
-	 * Add a player to the game.</br> Implementing class has to handle whether
+	/** Add a player to the game.</br> Implementing class has to handle whether
 	 * it can join or not and to what.
 	 *
-	 * @param p
-	 *            The joining player
+	 * @param p The joining player
 	 * @return true if the player could join, false otherwise
 	 */
 	public boolean addPlayer(Player p);
 
-	/**
-	 * Remove a player from the game.</br> Called when the player leaves the
+	/** Remove a player from the game.</br> Called when the player leaves the
 	 * server, teleports himself, gets teleported or uses /leave</br>
 	 * Implementing class needs to do output etc.
 	 *
-	 * @param p
-	 *            The leaving player
+	 * @param p The leaving player
 	 */
 	public void removePlayer(Player p);
+	
+	/** Start the game immediatly.<br>
+	 * Used when commands start the game or equal events happen.
+	 */
+	public void start();
+	
+	/** Get the maximum allowed players in this game.
+	 * 
+	 * @return The maximum amount of players.
+	 */
+	public int getMaxPlayers();
 }
