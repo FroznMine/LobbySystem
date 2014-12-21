@@ -98,4 +98,24 @@ public class User {
 			runnable.runTaskLater(LobbySystem.PLUGIN, ticks[0]);
 		}
 	}
+
+	/** Teleports the player to the given location.<br>
+	 * Should always be used to teleport the player.<br>
+	 * Checks if the new location is equal to the player's current location. If it is he won't get teleported.<br>
+	 * 
+	 * @param loc The location where the player should be teleported.
+	 * @return true if teleportation successful, false otherwise
+	 */
+	public boolean teleport(Location loc) {
+		Player p = Bukkit.getPlayer(uuid);
+		Location current = p.getLocation();
+		
+		if (current.equals(loc)) return false;
+		
+		lastLocation = current;
+		
+		p.teleport(loc);
+		
+		return true;
+	}
 }
