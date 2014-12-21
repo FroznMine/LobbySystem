@@ -9,57 +9,70 @@ import net.milkbowl.vault.economy.Economy;
 
 import org.bukkit.Bukkit;
 import org.bukkit.inventory.Inventory;
+import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.RegisteredServiceProvider;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import de.froznmine.lobby.event.InventoryChooseEvent;
+import de.froznmine.lobby.event.connection.PlayerConnectEvent;
 import de.froznmine.lobby.game.IGame;
 
 public class LobbySystem extends JavaPlugin {
-	public static Logger LOGGER;
 	public static Economy ECONOMY = null;
 	private static List<Inventory> inventories;
-	private static HashMap<JavaPlugin, IGame> registeredGames;
-	
-	public void onEnable() { 
-		LOGGER = this.getLogger();
-		
-		if (!new File(this.getDataFolder() + "config.yml").exists()) this.saveDefaultConfig();
-		
-		setupEconomy();
-		setupMenu();
-		
-		registerEvents();
-		registeredGames = new HashMap<JavaPlugin, IGame>();	
+	public static Logger LOGGER;
+	public static LobbySystem PLUGIN;
+	private static HashMap<JavaPlugin, Class<? extends IGame>> registeredGames;
+
+	public static void registerGame(final JavaPlugin plugin, final Class<? extends IGame> game) {
+		LobbySystem.registeredGames.remove(plugin);
+		LobbySystem.registeredGames.put(plugin, game);
 	}
-	
-	private void setupMenu() {
-		inventories.add(Bukkit.createInventory(null, 9));
+
+	@Override
+	public void onDisable() {
+
+	}
+
+	@Override
+	public void onEnable() {
+		LobbySystem.PLUGIN = this;
+
+		LobbySystem.LOGGER = this.getLogger();
+
+		if (!new File(this.getDataFolder() + "config.yml").exists())
+			this.saveDefaultConfig();
+
+		this.setupEconomy();
+		this.setupMenu();
+
+		this.registerEvents();
 		
+		LobbySystem.registeredGames = new HashMap<JavaPlugin, Class<? extends IGame>>();
 	}
 
 	private void registerEvents() {
-		Bukkit.getPluginManager().registerEvents(new InventoryChooseEvent(), this);
+		PluginManager manager = Bukkit.getPluginManager();
+		
+		manager.registerEvents(new InventoryChooseEvent(), this);
+		manager.registerEvents(new PlayerConnectEvent(), this);
 	}
 
 	private void setupEconomy() {
-		LOGGER.info("Enabling economy.");
-		RegisteredServiceProvider<Economy> economyProvider = getServer().getServicesManager().getRegistration(Economy.class);
+		LobbySystem.LOGGER.info("Enabling economy.");
+		final RegisteredServiceProvider<Economy> economyProvider = this
+				.getServer().getServicesManager()
+				.getRegistration(Economy.class);
 		if (economyProvider != null) {
-			ECONOMY = economyProvider.getProvider();
-			LOGGER.info("Enabled economy.");
+			LobbySystem.ECONOMY = economyProvider.getProvider();
+			LobbySystem.LOGGER.info("Enabled economy.");
 			return;
 		}
-		LOGGER.info("Cannot enable economy.");
+		LobbySystem.LOGGER.info("Cannot enable economy.");
 	}
-	
-	
-	public void onDisable() { 
-		
-	}
-	
-	public static void registerGame(JavaPlugin plugin, IGame game) {
-		registeredGames.remove(plugin);
-		registeredGames.put(plugin, game);
+
+	private void setupMenu() {
+		LobbySystem.inventories.add(Bukkit.createInventory(null, 9));
+
 	}
 }
