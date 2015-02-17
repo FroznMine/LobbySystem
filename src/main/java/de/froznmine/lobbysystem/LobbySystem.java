@@ -1,7 +1,7 @@
-package de.froznmine.lobby;
+package de.froznmine.lobbysystem;
 
 import java.io.File;
-import java.util.HashMap;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Logger;
 
@@ -13,20 +13,26 @@ import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.RegisteredServiceProvider;
 import org.bukkit.plugin.java.JavaPlugin;
 
-import de.froznmine.lobby.event.InventoryChooseEvent;
-import de.froznmine.lobby.event.connection.PlayerConnectEvent;
-import de.froznmine.lobby.game.IGame;
+import de.froznmine.lobbysystem.event.InventoryChooseEvent;
+import de.froznmine.lobbysystem.event.connection.PlayerConnectEvent;
+import de.froznmine.lobbysystem.game.GamePlugin;
 
 public class LobbySystem extends JavaPlugin {
+	public static Position MAIN_LOBBY;
 	public static Economy ECONOMY = null;
 	private static List<Inventory> inventories;
 	public static Logger LOGGER;
 	public static LobbySystem PLUGIN;
-	private static HashMap<JavaPlugin, Class<? extends IGame>> registeredGames;
+	private static List<GamePlugin> gameTypes;
 
-	public static void registerGame(final JavaPlugin plugin, final Class<? extends IGame> game) {
-		LobbySystem.registeredGames.remove(plugin);
-		LobbySystem.registeredGames.put(plugin, game);
+	/**
+	 * Register a game plugin that should be usable.
+	 * 
+	 * @param gamePlugin the game plugin
+	 */
+	public static void registerGame(final GamePlugin gamePlugin) {
+		gameTypes.remove(gamePlugin);
+		gameTypes.add(gamePlugin);
 	}
 
 	@Override
@@ -48,7 +54,7 @@ public class LobbySystem extends JavaPlugin {
 
 		this.registerEvents();
 		
-		LobbySystem.registeredGames = new HashMap<JavaPlugin, Class<? extends IGame>>();
+		LobbySystem.gameTypes = new ArrayList<GamePlugin>();
 	}
 
 	private void registerEvents() {

@@ -1,4 +1,4 @@
-name: CannonFight
-main: de.froznmine.cannonfight.CannonFight
+name: LobbySystem
+main: de.froznmine.lobby.LobbySystem
 version: 0.1
 author: FroznMine
