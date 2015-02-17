@@ -1,11 +1,11 @@
-package de.froznmine.lobby.event.connection;
+package de.froznmine.lobbysystem.event.connection;
 
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerJoinEvent;
 
-import de.froznmine.lobby.user.User;
-import de.froznmine.lobby.user.Users;
+import de.froznmine.lobbysystem.user.User;
+import de.froznmine.lobbysystem.user.Users;
 
 public class PlayerConnectEvent implements Listener {
 	@EventHandler

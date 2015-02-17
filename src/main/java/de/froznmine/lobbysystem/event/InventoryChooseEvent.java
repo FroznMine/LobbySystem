@@ -1,4 +1,4 @@
-package de.froznmine.lobby.event;
+package de.froznmine.lobbysystem.event;
 
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
