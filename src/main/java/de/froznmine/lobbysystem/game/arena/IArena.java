@@ -1,13 +1,14 @@
-package de.froznmine.lobby.game.arena;
+package de.froznmine.lobbysystem.game.arena;
 
 import java.io.Serializable;
 
 import org.bukkit.Location;
 import org.bukkit.configuration.serialization.ConfigurationSerializable;
 
-import de.froznmine.lobby.game.GameUser;
+import de.froznmine.lobbysystem.Position;
+import de.froznmine.lobbysystem.game.GameUser;
 
-public interface IArena extends ConfigurationSerializable, Serializable {
+public interface IArena extends ConfigurationSerializable, Serializable, Position {
 	
 	/** Loads the arena and needed stuff at the specific location.<br>
 	 * Also has to load and set chest contents.
@@ -30,8 +31,14 @@ public interface IArena extends ConfigurationSerializable, Serializable {
 	 */
 	public int getMaxPlayers();
 	
+	/** Get the required amount of players to start the game.
+	 * 
+	 * @return The required amount of players
+	 */
+	public int getRequiredPlayers();
+	
 	/** Teleports the specific player to the next spawn location.<br>
-	 * Teams and other aspects have to be handled gamewise.
+	 * Teams and other aspects have to be handled.
 	 * 
 	 * @param player The player to teleport
 	 * @return true if teleport was successful, false otherwise
