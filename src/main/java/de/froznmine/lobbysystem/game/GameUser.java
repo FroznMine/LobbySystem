@@ -1,8 +1,8 @@
-package de.froznmine.lobby.game;
+package de.froznmine.lobbysystem.game;
 
 import org.bukkit.entity.Player;
 
-import de.froznmine.lobby.user.User;
+import de.froznmine.lobbysystem.user.User;
 
 /**
  * A GamePlayer is created for every player in a game.</br> It should be used to

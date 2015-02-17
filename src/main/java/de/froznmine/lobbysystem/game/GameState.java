@@ -1,4 +1,4 @@
-package de.froznmine.lobby.game;
+package de.froznmine.lobbysystem.game;
 
 /**
  * GameState is an enum to display the games state.
