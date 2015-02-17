@@ -8,12 +8,13 @@ import org.bukkit.Location;
 
 import de.froznmine.lobbysystem.Position;
 import de.froznmine.lobbysystem.game.GameUser;
+import de.froznmine.lobbysystem.game.arena.IArena;
 import de.froznmine.lobbysystem.lobby.event.LobbyJoinEvent;
 import de.froznmine.lobbysystem.lobby.event.LobbyLeaveEvent;
 import de.froznmine.lobbysystem.lobby.event.LobbyLeaveEvent.LeaveReason;
 
 public abstract class ILobby extends Position {
-	protected Map<GameUser, Vote> votes;
+	protected Map<GameUser, IArena> votes;
 	protected Location tpLocation;
 	
 	public Collection<GameUser> getPlayers() {
