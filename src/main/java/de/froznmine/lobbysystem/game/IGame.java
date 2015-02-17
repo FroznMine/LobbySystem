@@ -5,9 +5,11 @@ import java.util.List;
 import org.bukkit.entity.Player;
 
 import de.froznmine.lobbysystem.Position;
+import de.froznmine.lobbysystem.game.arena.IArena;
 
 public abstract class IGame extends Position {
 	protected List<GameUser> players;
+	protected IArena arena;
 	
 	/** Add a player to the game.</br> Implementing class has to handle whether
 	 * it can join or not and to what.
@@ -18,7 +20,8 @@ public abstract class IGame extends Position {
 	public boolean addPlayer(Player p) {
 		GameUser u = GameUsers.get(p);
 		
-		Pla
+		
+		return false;
 	}
 
 	/** Remove a player from the game.</br> Called when the player leaves the
@@ -27,18 +30,22 @@ public abstract class IGame extends Position {
 	 *
 	 * @param p The leaving player
 	 */
-	public void removePlayer(Player p);
+	public void removePlayer(Player p) {
+		
+	}
 	
 	/** Start the game immediatly.<br>
 	 * Used when commands start the game or equal events happen.
 	 */
-	public void start();
+	public abstract void start();
 	
 	/** Get the maximum allowed players in this game.
 	 * 
 	 * @return The maximum amount of players.
 	 */
-	public int getMaxPlayers();
+	public int getMaxPlayers() {
+		return this.arena.getMaxPlayers();
+	}
 	
 //	public List<>
 }
