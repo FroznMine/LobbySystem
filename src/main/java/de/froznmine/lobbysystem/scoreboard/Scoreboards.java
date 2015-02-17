@@ -1,11 +1,11 @@
-package de.froznmine.lobby.scoreboard;
+package de.froznmine.lobbysystem.scoreboard;
 
 import org.bukkit.conversations.Conversation;
 import org.bukkit.entity.Player;
 import org.bukkit.scheduler.BukkitRunnable;
 import org.bukkit.scoreboard.Scoreboard;
 
-import de.froznmine.lobby.LobbySystem;
+import de.froznmine.lobbysystem.LobbySystem;
 
 public class Scoreboards {
 	/**

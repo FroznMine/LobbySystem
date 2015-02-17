@@ -1,4 +1,4 @@
-package de.froznmine.lobby.menu;
+package de.froznmine.lobbysystem.menu;
 
 import java.io.Serializable;
 import java.util.HashMap;
