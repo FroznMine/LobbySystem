@@ -1,4 +1,4 @@
-package de.froznmine.lobby.user;
+package de.froznmine.lobbysystem.user;
 
 import java.util.UUID;
 
@@ -10,7 +10,8 @@ import org.bukkit.entity.Player;
 import org.bukkit.scheduler.BukkitRunnable;
 import org.bukkit.scoreboard.Scoreboard;
 
-import de.froznmine.lobby.LobbySystem;
+import de.froznmine.lobbysystem.LobbySystem;
+import de.froznmine.lobbysystem.Position;
 
 public class User {
 	/**
@@ -26,7 +27,22 @@ public class User {
 	 * The users uuid
 	 */
 	protected final UUID uuid;
-
+	/**
+	 * The tokens the user has.
+	 * Tokens are the premium cash type.
+	 * They can be used for special offers.
+	 */
+	protected double token;
+	/**
+	 * The amount of global coins the player has.
+	 * He can buy serverwide features with this.
+	 */
+	protected double globalCoins;
+	/**
+	 * The players current position.
+	 * This can be a game or a lobby etc.
+	 */
+	protected Position position;
 	/**
 	 * Creates a new User based on the given player</br> Gets UUID and location
 	 * of that player and stores it</br>
@@ -38,6 +54,7 @@ public class User {
 		this.uuid = player.getUniqueId();
 		this.lastLocation = player.getLocation();
 		this.userState = UserState.LOBBY;
+		this.position = LobbySystem.MAIN_LOBBY;
 	}
 
 	/**
@@ -117,5 +134,18 @@ public class User {
 		p.teleport(loc);
 		
 		return true;
+	}
+	
+	/** Get the player which has the stored UUID.<br>
+	 * Returns null if the player isn't online.
+	 * 
+	 * @return The Player if he is online, null otherwise
+	 */
+	public Player getPlayer() {
+		return Bukkit.getPlayer(uuid);
+	}
+	
+	public Position getPosition() {
+		return this.position;
 	}
 }

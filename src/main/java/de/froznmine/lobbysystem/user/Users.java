@@ -1,4 +1,4 @@
-package de.froznmine.lobby.user;
+package de.froznmine.lobbysystem.user;
 
 import java.util.ArrayList;
 import java.util.List;
