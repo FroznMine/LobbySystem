@@ -23,14 +23,14 @@ public class Schematic {
 	private byte[] blocks;
 	private byte[] data;
 	private short width;
-	private short lenght;
+	private short length;
 	private short height;
 
-	public Schematic(byte[] blocks, byte[] data, short width, short lenght,	short height) {
+	public Schematic(byte[] blocks, byte[] data, short width, short length,	short height) {
 		this.blocks = blocks;
 		this.data = data;
 		this.width = width;
-		this.lenght = lenght;
+		this.length = length;
 		this.height = height;
 	}
 
@@ -46,8 +46,8 @@ public class Schematic {
 		return width;
 	}
 
-	public short getLenght() {
-		return lenght;
+	public short getLength() {
+		return length;
 	}
 
 	public short getHeight() {
@@ -61,13 +61,13 @@ public class Schematic {
 		byte[] blocks = this.getBlocks();
 		byte[] blockData = this.getData();
 		
-		short length = this.getLenght();
+		short length = this.getLength();
 		short width = this.getWidth();
 		short height = this.getHeight();
 			
-		for (int x = 0; x < width; ++x) {
-			for (int y = 0; y < height; ++y) {
-				for (int z = 0; z < length; ++z) {
+		for (int x = 0; x < width; x++) {
+			for (int y = 0; y < height; y++) {
+				for (int z = 0; z < length; z++) {
 					int index = y * width * length + z * width + x;
 					Block block = new Location(loc.getWorld(), x + loc.getX(), y + loc.getY(), z + loc.getZ()).getBlock();	
 					
@@ -111,6 +111,22 @@ public class Schematic {
 		
 		return specialFound;
 	}	
+	
+	public boolean clear(Location loc) {
+		for (int x = 0; x < width; x++) {
+			for (int y = 0; y < height; y++) {
+				for (int z = 0; z < length; z++) {
+					Block b = new Location(loc.getWorld(), loc.getX() + x, loc.getY() + y, loc.getZ() + z).getBlock();
+					
+					b.getDrops().clear();
+					
+					b.setType(Material.AIR);
+				}
+			}
+		}
+		
+		return true;
+	}
 	
 	public static Schematic loadSchematic(File input) throws IOException {
 		return loadSchematic(new FileInputStream(input));
