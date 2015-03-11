@@ -5,11 +5,11 @@ import java.util.List;
 import org.bukkit.entity.Player;
 
 import de.froznmine.lobbysystem.Position;
-import de.froznmine.lobbysystem.game.arena.IArena;
+import de.froznmine.lobbysystem.game.arena.Arena;
 
 public abstract class IGame extends Position {
 	protected List<GameUser> players;
-	protected IArena arena;
+	protected Arena arena;
 	
 	/** Add a player to the game.</br> Implementing class has to handle whether
 	 * it can join or not and to what.

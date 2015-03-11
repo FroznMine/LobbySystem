@@ -5,19 +5,20 @@ import java.util.Map;
 
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
+import org.bukkit.inventory.ItemStack;
 
 import de.froznmine.lobbysystem.Position;
 import de.froznmine.lobbysystem.game.GameUser;
-import de.froznmine.lobbysystem.game.arena.IArena;
+import de.froznmine.lobbysystem.game.arena.Arena;
 import de.froznmine.lobbysystem.lobby.event.LobbyJoinEvent;
 import de.froznmine.lobbysystem.lobby.event.LobbyLeaveEvent;
 import de.froznmine.lobbysystem.lobby.event.LobbyLeaveEvent.LeaveReason;
 
 public abstract class ILobby extends Position {
-	protected Map<GameUser, IArena> votes;
+	protected Map<GameUser, Arena> votes;
 	protected Location tpLocation;
 	
-	public Collection<GameUser> getPlayers() {
+	public Collection<GameUser> getGameUsers() {
 		return this.votes.keySet();
 	}
 	
@@ -32,7 +33,6 @@ public abstract class ILobby extends Position {
 		
 		u.teleport(tpLocation);
 		
-		// TODO inv change usw
 		return true;
 	}
 	
@@ -48,4 +48,6 @@ public abstract class ILobby extends Position {
 		u.leave();
 		return true;
 	}
+	
+	public abstract ItemStack[] getLobbyItems();
 }
