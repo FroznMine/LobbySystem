@@ -44,6 +44,12 @@ public class User {
 	 */
 	protected Position position;
 	/**
+	 * The handler for the player's inventory.
+	 * Handles which items the player has in his inventory and updates them if necessary.
+	 */
+	protected InventoryHandler invHandler;
+	
+	/**
 	 * Creates a new User based on the given player</br> Gets UUID and location
 	 * of that player and stores it</br>
 	 *
@@ -147,5 +153,15 @@ public class User {
 	
 	public Position getPosition() {
 		return this.position;
+	}
+	
+	@Override
+	public boolean equals(Object obj) {
+		if (obj instanceof User) {
+			if (((User) obj).uuid.compareTo(this.uuid) == 0) {
+				return true;
+			}
+		}
+		return false;
 	}
 }
