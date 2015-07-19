@@ -1,11 +1,10 @@
-package de.froznmine.lobbysystem.scoreboard;
+package de.pesacraft.lobbysystem.scoreboard;
 
-import org.bukkit.conversations.Conversation;
 import org.bukkit.entity.Player;
 import org.bukkit.scheduler.BukkitRunnable;
 import org.bukkit.scoreboard.Scoreboard;
 
-import de.froznmine.lobbysystem.LobbySystem;
+import de.pesacraft.lobbysystem.LobbySystem;
 
 public class Scoreboards {
 	/**
@@ -17,7 +16,8 @@ public class Scoreboards {
 	 * @param ticks
 	 *            the time in ticks to display it
 	 */
-	public static void displayScoreboard(final Player p, final Scoreboard scoreboard, final int ticks) {
+	public static void displayScoreboard(final Player p,
+			final Scoreboard scoreboard, final int ticks) {
 		final Scoreboard old = p.getScoreboard();
 
 		p.setScoreboard(scoreboard);

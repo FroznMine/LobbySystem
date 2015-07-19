@@ -7,18 +7,15 @@ import java.io.Serializable;
 import java.util.Map;
 
 import org.bukkit.Location;
-import org.bukkit.configuration.file.FileConfiguration;
-import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.configuration.serialization.ConfigurationSerializable;
 import org.bukkit.entity.Entity;
 import org.bukkit.util.Vector;
 
-import de.froznmine.lobbysystem.Position;
 import de.froznmine.lobbysystem.game.GamePlugin;
 import de.froznmine.lobbysystem.game.GameUser;
 import de.froznmine.lobbysystem.util.FileBundle;
 
-public abstract class Arena extends Position implements ConfigurationSerializable, Serializable {
+public abstract class Arena implements ConfigurationSerializable, Serializable {
 	private Schematic schematic;
 	
 	public Arena(GamePlugin plugin, String name) throws IOException {

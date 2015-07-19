@@ -17,14 +17,33 @@ public class GameUser extends User {
 	 * Creates a new GamePlayer based on the given player</br> Gets UUID and
 	 * location of that player and stores it</br>
 	 *
-	 * @param player
-	 *            The player for which the GameUser should be created
+	 * @param player The player for which the GameUser should be created
 	 */
 	public GameUser(final Player player) {
 		super(player);
 		this.role = PlayerRole.PLAYER;
 	}
 	
+	/**
+	 * Create a GameUser based on a given User object
+	 * 
+	 * @param u the user object which should be expanded
+	 */
+	public GameUser(User u) {
+		super(u);
+		this.role = PlayerRole.PLAYER;
+	}
+
+	/**
+	 * Create a copy of a given GameUser
+	 * 
+	 * @param u The GameUser to clone
+	 */
+	public GameUser(GameUser u) {
+		super(u);
+		this.role = u.role;
+	}
+
 	public PlayerRole getRole() {
 		return this.role;
 	}

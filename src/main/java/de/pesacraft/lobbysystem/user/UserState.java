@@ -1,4 +1,4 @@
-package de.froznmine.lobbysystem.user;
+package de.pesacraft.lobbysystem.user;
 
 public enum UserState {
 	AFK, INGAME, LOBBY, OFFLINE;

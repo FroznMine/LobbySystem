@@ -1,4 +1,4 @@
-package de.froznmine.lobbysystem.menu;
+package de.pesacraft.lobbysystem.menu;
 
 import java.io.Serializable;
 import java.util.HashMap;
@@ -7,15 +7,15 @@ import java.util.Map;
 import org.bukkit.configuration.serialization.ConfigurationSerializable;
 
 public class Menu implements Serializable, ConfigurationSerializable {
-	private String title;
-	
-	private char shortcut;
 	private char[][] inventory;
-	
+
+	private char shortcut;
+	private String title;
+
 	@Override
 	public Map<String, Object> serialize() {
-		Map<String, Object> map = new HashMap<String, Object>();
-		
+		final Map<String, Object> map = new HashMap<String, Object>();
+
 		return map;
 	}
 
