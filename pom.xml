@@ -9,11 +9,11 @@
     <distributionManagement>
         <repository>
             <id>pesacraft-releases</id>
-            <url>http://pesacraft.de:8081/nexus/content/repositories/releases/</url>
+            <url>http://pesacraft.de:8081/nexus/content/repositories/releases</url>
         </repository>
         <snapshotRepository>
             <id>pesacraft-snapshots</id>
-            <url>http://pesacraft.de:8081/nexus/content/repositories/snapshots/</url>
+            <url>http://pesacraft.de:8081/nexus/content/repositories/snapshots</url>
         </snapshotRepository>
     </distributionManagement>
         
@@ -31,10 +31,10 @@
 
     <repositories>
         <repository>
-            <id>bukkit-repo</id>
-            <url>http://repo.bukkit.org/content/groups/public/</url>
-        </repository>     
-
+            <id>spigot-repo</id>
+            <url>https://hub.spigotmc.org/nexus/content/repositories/snapshots/</url>
+        </repository>
+        
         <repository>
             <id>vault-repo</id>
             <url>http://nexus.theyeticave.net/content/repositories/pub_releases</url>
@@ -46,17 +46,6 @@
         </repository>
     </repositories>
 
-    <pluginRepositories>
-            <pluginRepository>
-                    <id>autoincrement-versions-maven-plugin</id>
-                    <name>autoincrement-versions-maven-plugin</name>
-                    <url>http://autoincrement-versions-maven-plugin.googlecode.com/svn/repo</url>
-                    <snapshots>
-                            <enabled>true</enabled>
-                    </snapshots>
-            </pluginRepository>
-    </pluginRepositories>
- 
     <dependencies>
         <dependency>
             <groupId>org.bukkit</groupId>
