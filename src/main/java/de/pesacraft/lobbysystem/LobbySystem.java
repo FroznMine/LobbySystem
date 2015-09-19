@@ -24,7 +24,8 @@ import de.pesacraft.lobbysystem.user.Users;
 
 public class LobbySystem extends JavaPlugin {
 	public static Economy ECONOMY = null;
-	private static List<Inventory> inventories;
+	// TODO auskoppeln
+	//private static List<Inventory> inventories;
 	public static Logger LOGGER;
 	public static Position MAIN_LOBBY;
 	public static LobbySystem PLUGIN;
@@ -47,26 +48,29 @@ public class LobbySystem extends JavaPlugin {
 	// gameTypes.add(gamePlugin);
 	// }
 
-	@Override
-	public void onDisable() {
-
-	}
-
+	
 	@Override
 	public void onEnable() {
 		LobbySystem.PLUGIN = this;
 
 		LobbySystem.LOGGER = this.getLogger();
 
+		
 		if (!new File(this.getDataFolder() + "config.yml").exists())
 			this.saveDefaultConfig();
 
+		this.setupDatabase();
 		this.setupEconomy();
 		this.setupMenu();
 
 		this.registerEvents();
 
 		// LobbySystem.gameTypes = new ArrayList<GamePlugin>();
+	}
+	
+	@Override
+	public void onDisable() {
+
 	}
 
 	private void registerEvents() {
@@ -90,7 +94,13 @@ public class LobbySystem extends JavaPlugin {
 	}
 
 	private void setupMenu() {
-		LobbySystem.inventories.add(Bukkit.createInventory(null, 9));
+		//LobbySystem..inventories.add(Bukkit.createInventory(null, 9));
 
 	}
+	
+	private void setupDatabase() {
+		// TODO Auto-generated method stub
+		
+	}
+
 }

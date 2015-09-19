@@ -7,6 +7,7 @@ import net.milkbowl.vault.economy.EconomyResponse.ResponseType;
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.entity.Player;
+import org.bukkit.event.player.PlayerTeleportEvent.TeleportCause;
 import org.bukkit.scheduler.BukkitRunnable;
 import org.bukkit.scoreboard.Scoreboard;
 
@@ -148,7 +149,7 @@ public class User {
 	 * location.
 	 */
 	public void leave() {
-		Bukkit.getPlayer(this.uuid).teleport(this.lastLocation);
+		getPlayer().teleport(this.lastLocation);
 	}
 
 	/**
@@ -200,12 +201,16 @@ public class User {
 
 		this.lastLocation = current;
 
-		p.teleport(loc);
+		p.teleport(loc, TeleportCause.PLUGIN);
 
 		return true;
 	}
 	
 	public InventoryHandler getInventoryHandler() {
 		return invHandler;
+	}
+
+	public void sendMessage(String msg) {
+		getPlayer().sendMessage(msg);
 	}
 }
