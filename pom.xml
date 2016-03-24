@@ -26,7 +26,7 @@
                 
         <vault.version>1.4.1</vault.version>
         
-        <mongodb.version>3.2.1</mongodb.version>
+        <mongodb.version>3.2.2</mongodb.version>
     </properties>
 
     <repositories>
@@ -58,12 +58,6 @@
             <groupId>net.milkbowl.vault</groupId>
             <artifactId>Vault</artifactId>
             <version>${vault.version}</version>
-            <exclusions>
-                <exclusion>
-                    <groupId>org.bukkit</groupId>
-                    <artifactId>bukkit</artifactId>
-                </exclusion>
-            </exclusions>
             <scope>provided</scope>
         </dependency>
         
@@ -72,7 +66,6 @@
         	<artifactId>mongodb-driver-async</artifactId>
         	<version>${mongodb.version}</version>
     	</dependency>
-
     </dependencies>
 
     <build>
@@ -109,34 +102,11 @@
                         </goals>
                         <configuration>
                             <createDependencyReducedPom>false</createDependencyReducedPom>
-                            <artifactSet>
-                                <includes>
-                                    <include>org.mongodb:mongodb-driver-async:*</include>
-                                </includes>
-                            </artifactSet>
                      </configuration>
                     </execution>
                 </executions>
             </plugin>
             
-	        <plugin>
-                <groupId>org.codehaus.mojo</groupId>
-                <artifactId>build-helper-maven-plugin</artifactId>
-                <executions>
-                    <execution>
-                        <phase>generate-sources</phase>
-                        <goals>
-                            <goal>add-source</goal>
-                        </goals>
-                        <configuration>
-                            <sources>
-                                <source>lib</source>
-                                <source>src/main/java</source>
-                            </sources>
-                        </configuration>
-                    </execution>
-                </executions>
-            </plugin>
         </plugins>
     </build>
 </project>
