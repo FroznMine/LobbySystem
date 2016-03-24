@@ -24,7 +24,7 @@
         
         <bukkit.version>R0.1-SNAPSHOT</bukkit.version>
                 
-        <vault.version>1.4.1</vault.version>
+        <vault.version>1.5.6</vault.version>
         
         <mongodb.version>3.2.2</mongodb.version>
     </properties>
